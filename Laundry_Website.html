@@ -1,0 +1,3261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DhobiPass — Premium Subscription Laundry in India</title>
+    <meta name="description" content="Subscription-based laundry pickup & delivery across India. Flexible plans, transparent pricing, and on-time service.">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+    <style>
+        /* ===== DESIGN SYSTEM ===== */
+        :root {
+            --bg: #FAFAF9;
+            --bg-card: #FFFFFF;
+            --text-primary: #18181B;
+            --text-secondary: #71717A;
+            --text-muted: #A1A1AA;
+            --border: #E4E4E7;
+            --border-light: #F4F4F5;
+            --accent: #6366F1;
+            --accent-hover: #4F46E5;
+            --accent-light: #EEF2FF;
+            --success: #10B981;
+            --success-light: #ECFDF5;
+            --warning: #F59E0B;
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            --radius-full: 9999px;
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px -2px rgba(0,0,0,0.05);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.08), 0 4px 6px -4px rgba(0,0,0,0.04);
+            --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.08), 0 8px 10px -6px rgba(0,0,0,0.04);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        html { 
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        body {
+            font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .font-display { 
+            font-family: 'DM Serif Display', Georgia, serif; 
+            letter-spacing: -0.02em;
+        }
+
+        /* ===== UTILITIES ===== */
+        .container-custom {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        @media (min-width: 640px) {
+            .container-custom { padding: 0 24px; }
+        }
+
+        @media (min-width: 1024px) {
+            .container-custom { padding: 0 32px; }
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-xl);
+            padding: 24px;
+        }
+
+        @media (min-width: 640px) {
+            .card { padding: 32px; }
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            padding: 14px 24px;
+            border-radius: var(--radius-md);
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-hover);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-secondary {
+            background: var(--bg-card);
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            background: var(--border-light);
+            border-color: var(--text-muted);
+        }
+
+        .btn-dark {
+            background: var(--text-primary);
+            color: white;
+        }
+
+        .btn-dark:hover {
+            background: #27272A;
+            transform: translateY(-1px);
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            font-weight: 500;
+            padding: 6px 12px;
+            border-radius: var(--radius-full);
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+
+        .input {
+            width: 100%;
+            padding: 14px 16px;
+            font-size: 14px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            background: var(--bg-card);
+            color: var(--text-primary);
+            transition: all 0.2s ease;
+        }
+
+        .input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px var(--accent-light);
+        }
+
+        .input::placeholder {
+            color: var(--text-muted);
+        }
+
+        select.input {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2371717A' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            padding-right: 40px;
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .animate-fade-in-up {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+
+        .animate-slide-in-right {
+            animation: slideInRight 0.5s ease-out forwards;
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stagger-1 { transition-delay: 0.1s; }
+        .stagger-2 { transition-delay: 0.2s; }
+        .stagger-3 { transition-delay: 0.3s; }
+        .stagger-4 { transition-delay: 0.4s; }
+
+        /* ===== NAVIGATION ===== */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 16px 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav.scrolled {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-light);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--text-primary);
+            flex-shrink: 0;
+        }
+
+        .nav-logo-icon {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, var(--accent) 0%, #8B5CF6 100%);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .nav-logo-text {
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 1.2;
+        }
+
+        .nav-logo-sub {
+            font-size: 11px;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .nav-links {
+            display: none;
+            align-items: center;
+            gap: 32px;
+        }
+
+        @media (min-width: 1024px) {
+            .nav-links { display: flex; }
+        }
+
+        .nav-link {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.2s ease;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--text-primary);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.2s ease;
+            border-radius: 1px;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-btn-track {
+            display: none;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 16px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            background: transparent;
+            border: none;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        @media (min-width: 640px) {
+            .nav-btn-track { display: flex; }
+        }
+
+        .nav-btn-track:hover {
+            background: var(--border-light);
+            color: var(--text-primary);
+        }
+
+        .nav-btn-cta {
+            padding: 10px 20px;
+            font-size: 14px;
+        }
+
+        .mobile-menu-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            background: transparent;
+            border: none;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            color: var(--text-primary);
+        }
+
+        @media (min-width: 1024px) {
+            .mobile-menu-btn { display: none; }
+        }
+
+        .mobile-menu-btn:hover {
+            background: var(--border-light);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            inset: 0;
+            z-index: 99;
+            background: var(--bg-card);
+            padding: 100px 24px 24px;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            overflow-y: auto;
+        }
+
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+
+        .mobile-menu-links {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .mobile-menu-link {
+            font-size: 18px;
+            font-weight: 500;
+            color: var(--text-primary);
+            text-decoration: none;
+            padding: 16px;
+            border-radius: var(--radius-md);
+            transition: background 0.2s ease;
+        }
+
+        .mobile-menu-link:hover {
+            background: var(--border-light);
+        }
+
+        .mobile-menu-cta {
+            margin-top: 24px;
+            width: 100%;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            padding: 120px 0 80px;
+            background: linear-gradient(180deg, var(--bg) 0%, #F5F5F4 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        @media (min-width: 768px) {
+            .hero { padding: 140px 0 100px; }
+        }
+
+        .hero-grid {
+            display: grid;
+            gap: 48px;
+            align-items: center;
+        }
+
+        @media (min-width: 1024px) {
+            .hero-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 64px;
+            }
+        }
+
+        .hero-content {
+            order: 2;
+        }
+
+        @media (min-width: 1024px) {
+            .hero-content { order: 1; }
+        }
+
+        .hero-badge {
+            margin-bottom: 20px;
+        }
+
+        .hero-badge .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--success);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        .hero-title {
+            font-size: clamp(36px, 6vw, 56px);
+            line-height: 1.1;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+        }
+
+        .hero-description {
+            font-size: 16px;
+            color: var(--text-secondary);
+            max-width: 480px;
+            margin-bottom: 32px;
+            line-height: 1.7;
+        }
+
+        @media (min-width: 640px) {
+            .hero-description { font-size: 18px; }
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 40px;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .hero-stat {
+            padding: 16px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            text-align: center;
+        }
+
+        .hero-stat-value {
+            font-weight: 700;
+            font-size: 16px;
+            color: var(--text-primary);
+            margin-bottom: 2px;
+        }
+
+        .hero-stat-label {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        /* Hero Visual */
+        .hero-visual {
+            order: 1;
+            position: relative;
+        }
+
+        @media (min-width: 1024px) {
+            .hero-visual { order: 2; }
+        }
+
+        .hero-image-wrapper {
+            position: relative;
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            display: block;
+        }
+
+        @media (min-width: 640px) {
+            .hero-image { height: 400px; }
+        }
+
+        @media (min-width: 1024px) {
+            .hero-image { height: 500px; }
+        }
+
+        /* Demo Card */
+        .demo-card {
+            position: absolute;
+            bottom: 16px;
+            left: 16px;
+            right: 16px;
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            padding: 16px;
+            box-shadow: var(--shadow-xl);
+            border: 1px solid var(--border);
+        }
+
+        @media (min-width: 640px) {
+            .demo-card {
+                left: -20px;
+                right: auto;
+                bottom: 24px;
+                width: 280px;
+                padding: 20px;
+            }
+        }
+
+        .demo-card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+
+        .demo-card-title {
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .demo-card-badge {
+            font-size: 10px;
+            font-weight: 600;
+            padding: 4px 8px;
+            background: var(--border-light);
+            border-radius: var(--radius-sm);
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .demo-card-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .demo-card-item {
+            padding: 10px;
+            background: var(--border-light);
+            border-radius: var(--radius-sm);
+        }
+
+        .demo-card-item-label {
+            font-size: 10px;
+            color: var(--text-muted);
+            margin-bottom: 2px;
+        }
+
+        .demo-card-item-value {
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .demo-progress-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            margin-bottom: 6px;
+        }
+
+        .demo-progress-status {
+            color: var(--text-secondary);
+        }
+
+        .demo-progress-savings {
+            color: var(--success);
+            font-weight: 600;
+        }
+
+        .demo-progress-bar {
+            height: 6px;
+            background: var(--border);
+            border-radius: var(--radius-full);
+            overflow: hidden;
+        }
+
+        .demo-progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent) 0%, var(--success) 100%);
+            border-radius: var(--radius-full);
+            transition: width 0.5s ease;
+        }
+
+        .demo-card-actions {
+            display: flex;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .demo-card-btn {
+            flex: 1;
+            padding: 8px 12px;
+            font-size: 12px;
+            font-weight: 600;
+            border-radius: var(--radius-sm);
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .demo-card-btn-primary {
+            background: var(--text-primary);
+            color: white;
+        }
+
+        .demo-card-btn-primary:hover {
+            background: #27272A;
+        }
+
+        .demo-card-btn-secondary {
+            background: var(--border-light);
+            color: var(--text-secondary);
+        }
+
+        .demo-card-btn-secondary:hover {
+            background: var(--border);
+        }
+
+        /* Rating Badge */
+        .hero-rating {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: var(--text-primary);
+            color: white;
+            padding: 8px 14px;
+            border-radius: var(--radius-full);
+            font-size: 13px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* ===== MARQUEE ===== */
+        .marquee-section {
+            padding: 20px 0;
+            background: var(--bg-card);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            overflow: hidden;
+        }
+
+        .marquee-track {
+            display: flex;
+            animation: marquee 40s linear infinite;
+        }
+
+        .marquee-content {
+            display: flex;
+            align-items: center;
+            gap: 48px;
+            padding-right: 48px;
+        }
+
+        .marquee-item {
+            font-size: 20px;
+            font-weight: 500;
+            color: var(--text-muted);
+            white-space: nowrap;
+        }
+
+        @media (min-width: 768px) {
+            .marquee-item { font-size: 24px; }
+        }
+
+        .marquee-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--border);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        /* ===== SECTIONS ===== */
+        .section {
+            padding: 80px 0;
+        }
+
+        @media (min-width: 768px) {
+            .section { padding: 100px 0; }
+        }
+
+        .section-header {
+            margin-bottom: 48px;
+        }
+
+        @media (min-width: 768px) {
+            .section-header { margin-bottom: 64px; }
+        }
+
+        .section-header-flex {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        @media (min-width: 768px) {
+            .section-header-flex {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: flex-end;
+            }
+        }
+
+        .section-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 8px;
+        }
+
+        .section-title {
+            font-size: clamp(28px, 4vw, 40px);
+            line-height: 1.2;
+            color: var(--text-primary);
+        }
+
+        .section-description {
+            font-size: 16px;
+            color: var(--text-secondary);
+            max-width: 400px;
+        }
+
+        /* ===== HOW IT WORKS ===== */
+        .steps-grid {
+            display: grid;
+            gap: 24px;
+        }
+
+        @media (min-width: 768px) {
+            .steps-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 32px;
+            }
+        }
+
+        .step-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .step-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--accent);
+        }
+
+        .step-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .step-content {
+            padding: 24px;
+        }
+
+        .step-number {
+            width: 36px;
+            height: 36px;
+            background: var(--accent-light);
+            color: var(--accent);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+
+        .step-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .step-text {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* CTA Banner */
+        .cta-banner {
+            margin-top: 48px;
+            background: var(--text-primary);
+            border-radius: var(--radius-xl);
+            padding: 32px 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            color: white;
+        }
+
+        @media (min-width: 768px) {
+            .cta-banner {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                padding: 40px 48px;
+            }
+        }
+
+        .cta-banner-label {
+            font-size: 12px;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 4px;
+        }
+
+        .cta-banner-title {
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        @media (min-width: 768px) {
+            .cta-banner-title { font-size: 24px; }
+        }
+
+        .cta-banner .btn {
+            background: white;
+            color: var(--text-primary);
+            flex-shrink: 0;
+        }
+
+        .cta-banner .btn:hover {
+            background: var(--border-light);
+        }
+
+        /* ===== STATS ===== */
+        .stats-section {
+            background: var(--bg-card);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+        }
+
+        @media (min-width: 768px) {
+            .stats-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 48px;
+            }
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* ===== PLANS ===== */
+        .plans-section {
+            background: var(--border-light);
+        }
+
+        .billing-toggle {
+            display: inline-flex;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 4px;
+        }
+
+        .billing-btn {
+            padding: 10px 18px;
+            font-size: 14px;
+            font-weight: 500;
+            border: none;
+            background: transparent;
+            color: var(--text-secondary);
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .billing-btn.active {
+            background: var(--text-primary);
+            color: white;
+        }
+
+        .billing-btn .save-tag {
+            color: var(--success);
+            font-weight: 600;
+            margin-left: 4px;
+        }
+
+        .billing-btn.active .save-tag {
+            color: #4ADE80;
+        }
+
+        .plans-grid {
+            display: grid;
+            gap: 24px;
+        }
+
+        @media (min-width: 768px) {
+            .plans-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .plan-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-xl);
+            padding: 28px;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .plan-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .plan-card.featured {
+            background: var(--text-primary);
+            color: white;
+            border-color: transparent;
+        }
+
+        .plan-card.featured:hover {
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .plan-featured-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, var(--accent) 0%, #8B5CF6 100%);
+            color: white;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 6px 14px;
+            border-radius: var(--radius-full);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .plan-header {
+            margin-bottom: 20px;
+        }
+
+        .plan-name {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .plan-description {
+            font-size: 14px;
+            opacity: 0.7;
+        }
+
+        .plan-price {
+            margin-bottom: 20px;
+        }
+
+        .plan-price-value {
+            font-size: 36px;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .plan-price-period {
+            font-size: 14px;
+            opacity: 0.6;
+            margin-left: 4px;
+        }
+
+        .plan-price-sub {
+            font-size: 12px;
+            opacity: 0.5;
+            margin-top: 4px;
+        }
+
+        .plan-divider {
+            height: 1px;
+            background: currentColor;
+            opacity: 0.1;
+            margin-bottom: 20px;
+        }
+
+        .plan-card.featured .plan-divider {
+            background: white;
+            opacity: 0.2;
+        }
+
+        .plan-features {
+            list-style: none;
+            flex: 1;
+            margin-bottom: 24px;
+        }
+
+        .plan-feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+
+        .plan-feature:last-child {
+            margin-bottom: 0;
+        }
+
+        .plan-feature-icon {
+            flex-shrink: 0;
+            width: 18px;
+            height: 18px;
+            color: var(--success);
+        }
+
+        .plan-card.featured .plan-feature-icon {
+            color: #4ADE80;
+        }
+
+        .plan-btn {
+            width: 100%;
+        }
+
+        .plan-card.featured .plan-btn {
+            background: white;
+            color: var(--text-primary);
+        }
+
+        .plan-card.featured .plan-btn:hover {
+            background: var(--border-light);
+        }
+
+        .plan-extra {
+            font-size: 12px;
+            text-align: center;
+            margin-top: 12px;
+            opacity: 0.5;
+        }
+
+        /* Add-ons */
+        .addons-grid {
+            display: grid;
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        @media (min-width: 768px) {
+            .addons-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .addon-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+        }
+
+        .addon-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .addon-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .addon-item {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+        }
+
+        .addon-item-name {
+            color: var(--text-secondary);
+        }
+
+        .addon-item-price {
+            font-weight: 600;
+        }
+
+        .addon-feature {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        .addon-feature-icon {
+            width: 16px;
+            height: 16px;
+            color: var(--success);
+        }
+
+        /* ===== COVERAGE ===== */
+        .coverage-grid {
+            display: grid;
+            gap: 24px;
+        }
+
+        @media (min-width: 1024px) {
+            .coverage-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .city-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+
+        .city-chip {
+            padding: 10px 16px;
+            background: var(--border-light);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-full);
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .city-chip:hover {
+            background: var(--accent-light);
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .info-boxes {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .info-box {
+            padding: 16px;
+            background: var(--border-light);
+            border-radius: var(--radius-md);
+        }
+
+        .info-box-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+        }
+
+        .info-box-value {
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        /* Estimate Calculator */
+        .estimate-form {
+            display: grid;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        @media (min-width: 640px) {
+            .estimate-form {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .estimate-addons {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .estimate-result {
+            background: linear-gradient(135deg, var(--accent-light) 0%, #F3E8FF 100%);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+        }
+
+        .estimate-result-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .estimate-total-label {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .estimate-total-value {
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        .estimate-breakdown {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        /* ===== TESTIMONIALS ===== */
+        .testimonials-grid {
+            display: grid;
+            gap: 24px;
+        }
+
+        @media (min-width: 768px) {
+            .testimonials-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .testimonial-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-xl);
+            padding: 28px;
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .testimonial-stars {
+            display: flex;
+            gap: 2px;
+            margin-bottom: 16px;
+        }
+
+        .testimonial-star {
+            width: 16px;
+            height: 16px;
+            color: var(--warning);
+            fill: var(--warning);
+        }
+
+        .testimonial-quote {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .testimonial-text {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .testimonial-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .testimonial-name {
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .testimonial-location {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        /* Reviews header */
+        .reviews-summary {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .reviews-avatars {
+            display: flex;
+        }
+
+        .reviews-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 2px solid var(--bg-card);
+            object-fit: cover;
+            margin-left: -8px;
+        }
+
+        .reviews-avatar:first-child {
+            margin-left: 0;
+        }
+
+        .reviews-rating {
+            font-size: 14px;
+        }
+
+        .reviews-rating strong {
+            font-weight: 700;
+        }
+
+        .reviews-rating span {
+            color: var(--text-muted);
+        }
+
+        /* ===== FAQ ===== */
+        .faq-section {
+            background: var(--border-light);
+        }
+
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .faq-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+        }
+
+        .faq-item summary {
+            padding: 20px 24px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            list-style: none;
+        }
+
+        .faq-item summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .faq-item summary::after {
+            content: '';
+            width: 20px;
+            height: 20px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%2371717A' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+            background-size: contain;
+            transition: transform 0.2s ease;
+            flex-shrink: 0;
+        }
+
+        .faq-item[open] summary::after {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            padding: 0 24px 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* ===== FINAL CTA ===== */
+        .final-cta {
+            background: linear-gradient(135deg, var(--text-primary) 0%, #27272A 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .final-cta-title {
+            font-size: clamp(28px, 4vw, 40px);
+            margin-bottom: 16px;
+        }
+
+        .final-cta-text {
+            font-size: 16px;
+            opacity: 0.7;
+            max-width: 500px;
+            margin: 0 auto 32px;
+        }
+
+        .final-cta-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .final-cta .btn-secondary {
+            background: transparent;
+            border-color: rgba(255,255,255,0.3);
+            color: white;
+        }
+
+        .final-cta .btn-secondary:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(255,255,255,0.5);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            padding: 64px 0 32px;
+            background: var(--bg);
+        }
+
+        .footer-grid {
+            display: grid;
+            gap: 40px;
+            margin-bottom: 48px;
+        }
+
+        @media (min-width: 640px) {
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            }
+        }
+
+        .footer-brand {
+            max-width: 280px;
+        }
+
+        .footer-brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+
+        .footer-brand-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--accent) 0%, #8B5CF6 100%);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .footer-brand-name {
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .footer-brand-text {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 8px;
+        }
+
+        .footer-social-link {
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            transition: all 0.2s ease;
+        }
+
+        .footer-social-link:hover {
+            background: var(--text-primary);
+            border-color: var(--text-primary);
+            color: white;
+        }
+
+        .footer-column-title {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-link {
+            font-size: 14px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--text-primary);
+        }
+
+        .footer-newsletter-text {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+        }
+
+        .footer-newsletter-form {
+            display: flex;
+        }
+
+        .footer-newsletter-input {
+            flex: 1;
+            padding: 12px 14px;
+            border: 1px solid var(--border);
+            border-right: none;
+            border-radius: var(--radius-md) 0 0 var(--radius-md);
+            font-size: 14px;
+            background: var(--bg-card);
+        }
+
+        .footer-newsletter-input:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .footer-newsletter-btn {
+            padding: 12px 16px;
+            background: var(--text-primary);
+            color: white;
+            border: none;
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .footer-newsletter-btn:hover {
+            background: #27272A;
+        }
+
+        .footer-bottom {
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            text-align: center;
+        }
+
+        @media (min-width: 768px) {
+            .footer-bottom {
+                flex-direction: row;
+                justify-content: space-between;
+                text-align: left;
+            }
+        }
+
+        .footer-copyright {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .footer-made {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        /* ===== MODAL ===== */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 200;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(4px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            overflow-y: auto;
+        }
+
+        .modal-overlay.open {
+            display: flex;
+        }
+
+        .modal {
+            width: 100%;
+            max-width: 560px;
+            background: var(--bg-card);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-xl);
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: fadeInUp 0.3s ease;
+        }
+
+        .modal-header {
+            padding: 24px 24px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .modal-title {
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .modal-subtitle {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        .modal-close {
+            width: 36px;
+            height: 36px;
+            border: none;
+            background: var(--border-light);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+        }
+
+        .modal-close:hover {
+            background: var(--border);
+            color: var(--text-primary);
+        }
+
+        .modal-body {
+            padding: 24px;
+        }
+
+        .form-grid {
+            display: grid;
+            gap: 16px;
+        }
+
+        @media (min-width: 480px) {
+            .form-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-label {
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
+        .pickup-options {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+        }
+
+        .pickup-btn {
+            padding: 12px;
+            font-size: 13px;
+            font-weight: 500;
+            border: 1px solid var(--border);
+            background: var(--bg);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .pickup-btn:hover {
+            border-color: var(--text-muted);
+        }
+
+        .pickup-btn.active {
+            background: var(--text-primary);
+            color: white;
+            border-color: var(--text-primary);
+        }
+
+        .form-error {
+            font-size: 13px;
+            color: #DC2626;
+            margin-top: 16px;
+            display: none;
+        }
+
+        .form-error.show {
+            display: block;
+        }
+
+        .modal-footer {
+            padding: 16px 24px 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        @media (min-width: 480px) {
+            .modal-footer {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+        }
+
+        .modal-footer-text {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .modal-footer-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .btn-whatsapp {
+            background: #25D366;
+            color: white;
+        }
+
+        .btn-whatsapp:hover {
+            background: #128C7E;
+        }
+
+        /* Success Panel */
+        .success-panel {
+            padding: 24px;
+            background: var(--success-light);
+            border-top: 1px solid #D1FAE5;
+            display: none;
+        }
+
+        .success-panel.show {
+            display: block;
+        }
+
+        .success-content {
+            display: flex;
+            gap: 16px;
+        }
+
+        .success-icon {
+            width: 44px;
+            height: 44px;
+            background: var(--success);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .success-title {
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .success-text {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+
+        .success-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        /* ===== DRAWER ===== */
+        .drawer-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 200;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(4px);
+            display: none;
+        }
+
+        .drawer-overlay.open {
+            display: block;
+        }
+
+        .drawer {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            max-width: 420px;
+            background: var(--bg-card);
+            box-shadow: var(--shadow-xl);
+            z-index: 201;
+            display: flex;
+            flex-direction: column;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .drawer.open {
+            transform: translateX(0);
+        }
+
+        .drawer-header {
+            padding: 20px 24px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .drawer-title {
+            font-weight: 600;
+        }
+
+        .drawer-subtitle {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .drawer-body {
+            flex: 1;
+            padding: 24px;
+            overflow-y: auto;
+        }
+
+        .track-input-group {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+
+        .track-input-group .input {
+            flex: 1;
+        }
+
+        .track-result {
+            display: none;
+        }
+
+        .track-result.show {
+            display: block;
+        }
+
+        .track-status-card {
+            background: linear-gradient(135deg, var(--accent-light) 0%, #F3E8FF 100%);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .track-status-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .track-status-label {
+            font-weight: 600;
+        }
+
+        .track-status-value {
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .track-eta {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+
+        .track-progress {
+            height: 6px;
+            background: rgba(255,255,255,0.5);
+            border-radius: var(--radius-full);
+            overflow: hidden;
+        }
+
+        .track-progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent) 0%, var(--success) 100%);
+            border-radius: var(--radius-full);
+            transition: width 0.5s ease;
+        }
+
+        .track-meta {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 12px;
+        }
+
+        .track-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .track-step {
+            display: flex;
+            justify-content: space-between;
+            padding: 16px;
+            background: var(--border-light);
+            border-radius: var(--radius-md);
+            font-size: 14px;
+        }
+
+        .track-step-time {
+            color: var(--text-muted);
+        }
+
+        .drawer-footer {
+            padding: 20px 24px;
+            border-top: 1px solid var(--border);
+        }
+
+        .drawer-footer-text {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav" id="navbar">
+        <div class="container-custom">
+            <div class="nav-inner">
+                <a href="#" class="nav-logo">
+                    <div class="nav-logo-icon">
+                        <i data-lucide="shirt" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <div class="nav-logo-text">DhobiPass</div>
+                        <div class="nav-logo-sub">Premium Laundry</div>
+                    </div>
+                </a>
+
+                <div class="nav-links">
+                    <a href="#how" class="nav-link">How it works</a>
+                    <a href="#plans" class="nav-link">Plans</a>
+                    <a href="#coverage" class="nav-link">Coverage</a>
+                    <a href="#reviews" class="nav-link">Reviews</a>
+                    <a href="#faq" class="nav-link">FAQ</a>
+                </div>
+
+                <div class="nav-actions">
+                    <button class="nav-btn-track" id="btnTrack">
+                        <i data-lucide="package-search" class="w-4 h-4"></i>
+                        Track
+                    </button>
+                    <button class="btn btn-primary nav-btn-cta" id="btnNavSubscribe">
+                        Subscribe
+                    </button>
+                    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu">
+                        <i data-lucide="menu" class="w-6 h-6" id="menuIcon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-links">
+            <a href="#how" class="mobile-menu-link">How it works</a>
+            <a href="#plans" class="mobile-menu-link">Plans</a>
+            <a href="#coverage" class="mobile-menu-link">Coverage</a>
+            <a href="#reviews" class="mobile-menu-link">Reviews</a>
+            <a href="#faq" class="mobile-menu-link">FAQ</a>
+        </div>
+        <button class="btn btn-primary mobile-menu-cta" id="btnMobileSubscribe">
+            Start Subscription
+        </button>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container-custom">
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <div class="badge hero-badge animate-fade-in-up">
+                        <span class="pulse-dot"></span>
+                        Free Pickup & Delivery • 48h Turnaround
+                    </div>
+
+                    <h1 class="hero-title font-display animate-fade-in-up" style="animation-delay: 0.1s;">
+                        Laundry that fits your week.
+                    </h1>
+
+                    <p class="hero-description animate-fade-in-up" style="animation-delay: 0.2s;">
+                        DhobiPass is India's premium laundry subscription. Scheduled pickups, professional care, and predictable monthly pricing for students, professionals, and families.
+                    </p>
+
+                    <div class="hero-actions animate-fade-in-up" style="animation-delay: 0.3s;">
+                        <button class="btn btn-primary" id="btnHeroSubscribe">
+                            Choose a Plan
+                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </button>
+                        <a href="#how" class="btn btn-secondary">
+                            See How It Works
+                        </a>
+                    </div>
+
+                    <div class="hero-stats animate-fade-in-up" style="animation-delay: 0.4s;">
+                        <div class="hero-stat">
+                            <div class="hero-stat-value">₹0</div>
+                            <div class="hero-stat-label">Pickup Fee</div>
+                        </div>
+                        <div class="hero-stat">
+                            <div class="hero-stat-value">24-48h</div>
+                            <div class="hero-stat-label">Turnaround</div>
+                        </div>
+                        <div class="hero-stat">
+                            <div class="hero-stat-value">WhatsApp</div>
+                            <div class="hero-stat-label">Live Updates</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-visual animate-fade-in-up" style="animation-delay: 0.2s;">
+                    <div class="hero-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1545173168-9f1947eebb7f?w=800&h=600&fit=crop" 
+                             alt="Premium Laundry Service" 
+                             class="hero-image">
+                        
+                        <div class="hero-rating">
+                            <i data-lucide="star" class="w-4 h-4" style="fill: currentColor;"></i>
+                            4.9 Rating
+                        </div>
+
+                        <div class="demo-card">
+                            <div class="demo-card-header">
+                                <div class="demo-card-title">Next Pickup</div>
+                                <div class="demo-card-badge">Demo</div>
+                            </div>
+                            <div class="demo-card-grid">
+                                <div class="demo-card-item">
+                                    <div class="demo-card-item-label">Day</div>
+                                    <div class="demo-card-item-value" id="demoDay">Wednesday</div>
+                                </div>
+                                <div class="demo-card-item">
+                                    <div class="demo-card-item-label">Slot</div>
+                                    <div class="demo-card-item-value" id="demoSlot">7–9 PM</div>
+                                </div>
+                            </div>
+                            <div class="demo-progress-header">
+                                <span class="demo-progress-status" id="demoStatus">Picked up</span>
+                                <span class="demo-progress-savings">~₹650 saved</span>
+                            </div>
+                            <div class="demo-progress-bar">
+                                <div class="demo-progress-fill" id="demoProgress" style="width: 40%;"></div>
+                            </div>
+                            <div class="demo-card-actions">
+                                <button class="demo-card-btn demo-card-btn-primary" id="btnSimulate">Simulate</button>
+                                <button class="demo-card-btn demo-card-btn-secondary" id="btnReset">Reset</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Marquee -->
+    <section class="marquee-section">
+        <div class="marquee-track">
+            <div class="marquee-content">
+                <span class="marquee-item">Premium Wash</span>
+                <span class="marquee-dot"></span>
+                <span class="marquee-item">Eco-Friendly</span>
+                <span class="marquee-dot"></span>
+                <span class="marquee-item">Free Delivery</span>
+                <span class="marquee-dot"></span>
+                <span class="marquee-item">WhatsApp Updates</span>
+                <span class="marquee-dot"></span>
+                <span class="marquee-item">Student Friendly</span>
+                <span class="marquee-dot"></span>
+            </div>
+            <div class="marquee-content">
+                <span class="marquee-item">Premium Wash</span>
+                <span class="marquee-dot"></span>
+                <span class="marquee-item">Eco-Friendly</span>
+                <span class="marquee-dot"></span>
+                <span class="marquee-item">Free Delivery</span>
+                <span class="marquee-dot"></span>
+                <span class="marquee-item">WhatsApp Updates</span>
+                <span class="marquee-dot"></span>
+                <span class="marquee-item">Student Friendly</span>
+                <span class="marquee-dot"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="section" id="how">
+        <div class="container-custom">
+            <div class="section-header section-header-flex">
+                <div>
+                    <div class="section-label">How It Works</div>
+                    <h2 class="section-title font-display">Simple 3-Step Process</h2>
+                </div>
+                <p class="section-description">
+                    Subscribe once. We handle pickup, cleaning, quality checks, and delivery—every week.
+                </p>
+            </div>
+
+            <div class="steps-grid">
+                <div class="step-card animate-on-scroll">
+                    <img src="https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&h=400&fit=crop" 
+                         alt="Schedule Pickup" 
+                         class="step-image">
+                    <div class="step-content">
+                        <div class="step-number">01</div>
+                        <h3 class="step-title">Schedule Pickups</h3>
+                        <p class="step-text">Choose 1–4 pickups per month with preferred time slots. We come to your doorstep.</p>
+                    </div>
+                </div>
+
+                <div class="step-card animate-on-scroll stagger-1">
+                    <img src="https://images.unsplash.com/photo-1582735689369-4fe89db7114c?w=600&h=400&fit=crop" 
+                         alt="Professional Cleaning" 
+                         class="step-image">
+                    <div class="step-content">
+                        <div class="step-number">02</div>
+                        <h3 class="step-title">Professional Cleaning</h3>
+                        <p class="step-text">Wash & fold with fabric-safe detergents. Quality checks before dispatch.</p>
+                    </div>
+                </div>
+
+                <div class="step-card animate-on-scroll stagger-2">
+                    <img src="https://images.unsplash.com/photo-1489274495757-95c7c837b101?w=600&h=400&fit=crop" 
+                         alt="Doorstep Delivery" 
+                         class="step-image">
+                    <div class="step-content">
+                        <div class="step-number">03</div>
+                        <h3 class="step-title">Doorstep Delivery</h3>
+                        <p class="step-text">Track status and delivery ETA with WhatsApp updates. Fresh clothes delivered.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cta-banner animate-on-scroll">
+                <div>
+                    <div class="cta-banner-label">Student & hostel friendly</div>
+                    <div class="cta-banner-title">Skip the queue. Never run out of clean clothes.</div>
+                </div>
+                <button class="btn" id="btnBannerSubscribe">Get Started</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="section stats-section">
+        <div class="container-custom">
+            <div class="stats-grid">
+                <div class="stat animate-on-scroll">
+                    <div class="stat-value" data-count="2500">2,500+</div>
+                    <div class="stat-label">Happy Customers</div>
+                </div>
+                <div class="stat animate-on-scroll stagger-1">
+                    <div class="stat-value" data-count="15000">15,000+</div>
+                    <div class="stat-label">Orders Completed</div>
+                </div>
+                <div class="stat animate-on-scroll stagger-2">
+                    <div class="stat-value">24-48h</div>
+                    <div class="stat-label">Fast Turnaround</div>
+                </div>
+                <div class="stat animate-on-scroll stagger-3">
+                    <div class="stat-value">6</div>
+                    <div class="stat-label">Cities Live</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Plans -->
+    <section class="section plans-section" id="plans">
+        <div class="container-custom">
+            <div class="section-header section-header-flex">
+                <div>
+                    <div class="section-label">Subscription Plans</div>
+                    <h2 class="section-title font-display">Simple, Transparent Pricing</h2>
+                </div>
+                <div class="billing-toggle">
+                    <button class="billing-btn active" id="billMonthly">Monthly</button>
+                    <button class="billing-btn" id="billQuarterly">Quarterly <span class="save-tag">(10% off)</span></button>
+                </div>
+            </div>
+
+            <div class="plans-grid">
+                <!-- Starter -->
+                <div class="plan-card animate-on-scroll">
+                    <div class="plan-header">
+                        <div class="plan-name">Starter</div>
+                        <div class="plan-description">For light weekly loads</div>
+                    </div>
+                    <div class="plan-price">
+                        <span class="plan-price-value" data-price="starter">₹899</span>
+                        <span class="plan-price-period">/month</span>
+                        <div class="plan-price-sub" data-subprice="starter">₹899 billed monthly</div>
+                    </div>
+                    <div class="plan-divider"></div>
+                    <ul class="plan-features">
+                        <li class="plan-feature">
+                            <i data-lucide="check" class="plan-feature-icon"></i>
+                            <span>2 pickups / month</span>
+                        </li>
+                        <li class="plan-feature">
+                            <i data-lucide="check" class="plan-feature-icon"></i>
+                            <span>Up to 16 kg total</span>
+                        </li>
+                        <li class="plan-feature">
+                            <i data-lucide="check" class="plan-feature-icon"></i>
+                            <span>Wash & fold included</span>
+                        </li>
+                        <li class="plan-feature">
+                            <i data-lucide="check" class="plan-feature-icon"></i>
+                            <span>WhatsApp updates</span>
+                        </li>
+                    </ul>
+                    <button class="btn btn-dark plan-btn btnPlan" data-plan="Starter">Start Starter</button>
+                    <div class="plan-extra">Extra weight: ₹55/kg</div>
+                </div>
+
+                <!-- Plus -->
+                <div class="plan-card featured animate-on-scroll stagger-1">
+                    <div class="plan-featured-badge">Best Value</div>
+                    <div class="plan-header">
+                        <div class="plan-name">Plus</div>
+                        <div class="plan-description">For working professionals</div>
+                    </div>
+                    <div class="plan-price">
+                        <span class="plan-price-value" data-price="plus">₹1,399</span>
+                        <span class="plan-price-period">/month</span>
+                        <div class="plan-price-sub" data-subprice="plus">₹1,399 billed monthly</div>
+                    </div>
+                    <div class="plan-divider"></div>
+                    <ul class="plan-features">
+                        <li class="plan-feature">
+                            <i data-lucide="check" class="plan-feature-icon"></i>
+                            <span>4 pickups / month</span>
+                        </li>
+                        <li class="plan-feature">
+                            <i data-lucide="check" class="plan-feature-icon"></i>
+                            <span>Up to 32 kg total</span>
+                        </li>
+                        <li class="plan-feature">
+                            <i data-lucide="check" class="plan-feature-icon"></i>
+                            <span>Priority processing</span>
+                        </li>
+                        <li class="plan-feature">
+                            <i data-lucide="check" class="plan-feature-icon"></i>
+                            <span>Free stain treatment</span>
+                        </li>
+                    </ul>
+                    <button class="btn plan-btn btnPlan" data-plan="Plus">Start Plus</button>
+                    <div class="plan-extra">Extra weight: ₹49/kg</div>
+                </div>
+
+                <!-- Family -->
+                <div class="plan-card animate-on-scroll stagger-2">
+                    <div class="plan-header">
+                        <div class="plan-name">Family</div>
+                        <div class="plan-description">For families & roommates</div>
+                    </div>
+                    <div class="plan-price">
+                        <span class="plan-price-value" data-price="family">₹1,999</span>
+                        <span class="plan-price-period">/month</span>
+                        <div class="plan-price-sub" data-subprice="family">₹1,999 billed monthly</div>
+                    </div>
+                    <div class="plan-divider"></div>
+                    <ul class="plan-features">
+                        <li class="plan-feature">
+                            <i data-lucide="check" class="plan-feature-icon"></i>
+                            <span>6 pickups / month</span>
+                        </li>
+                        <li class="plan-feature">
+                            <i data-lucide="check" class="plan-feature-icon"></i>
+                            <span>Up to 50 kg total</span>
+                        </li>
+                        <li class="plan-feature">
+                            <i data-lucide="check" class="plan-feature-icon"></i>
+                            <span>Separate bags per member</span>
+                        </li>
+                        <li class="plan-feature">
+                            <i data-lucide="check" class="plan-feature-icon"></i>
+                            <span>Priority support</span>
+                        </li>
+                    </ul>
+                    <button class="btn btn-dark plan-btn btnPlan" data-plan="Family">Start Family</button>
+                    <div class="plan-extra">Extra weight: ₹45/kg</div>
+                </div>
+            </div>
+
+            <div class="addons-grid animate-on-scroll">
+                <div class="addon-card">
+                    <div class="addon-title">Add-ons</div>
+                    <div class="addon-list">
+                        <div class="addon-item">
+                            <span class="addon-item-name">Ironing</span>
+                            <span class="addon-item-price">₹8/piece</span>
+                        </div>
+                        <div class="addon-item">
+                            <span class="addon-item-name">Dry clean</span>
+                            <span class="addon-item-price">from ₹99</span>
+                        </div>
+                        <div class="addon-item">
+                            <span class="addon-item-name">Shoe cleaning</span>
+                            <span class="addon-item-price">from ₹199</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="addon-card">
+                    <div class="addon-title">Safety & Care</div>
+                    <div class="addon-list">
+                        <div class="addon-feature">
+                            <i data-lucide="check" class="addon-feature-icon"></i>
+                            Separate loads on request
+                        </div>
+                        <div class="addon-feature">
+                            <i data-lucide="check" class="addon-feature-icon"></i>
+                            Color sorting standard
+                        </div>
+                        <div class="addon-feature">
+                            <i data-lucide="check" class="addon-feature-icon"></i>
+                            Damage policy included
+                        </div>
+                    </div>
+                </div>
+                <div class="addon-card">
+                    <div class="addon-title">Payment Options</div>
+                    <div class="addon-list">
+                        <div class="addon-feature">
+                            <i data-lucide="check" class="addon-feature-icon"></i>
+                            UPI / Cards / Netbanking
+                        </div>
+                        <div class="addon-feature">
+                            <i data-lucide="check" class="addon-feature-icon"></i>
+                            Auto-renew toggle
+                        </div>
+                        <div class="addon-feature">
+                            <i data-lucide="check" class="addon-feature-icon"></i>
+                            Pause anytime
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coverage -->
+    <section class="section" id="coverage">
+        <div class="container-custom">
+            <div class="section-header section-header-flex">
+                <div>
+                    <div class="section-label">Service Coverage</div>
+                    <h2 class="section-title font-display">Check Your Area</h2>
+                </div>
+                <div style="width: 100%; max-width: 360px;">
+                    <div style="display: flex; gap: 8px;">
+                        <input type="text" class="input" id="pinInput" placeholder="Enter PIN code" maxlength="6" inputmode="numeric">
+                        <button class="btn btn-dark" id="btnCheckPin">Check</button>
+                    </div>
+                    <div id="pinResult" style="margin-top: 8px; font-size: 13px;"></div>
+                </div>
+            </div>
+
+            <div class="coverage-grid">
+                <div class="card animate-on-scroll">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px;">
+                        <div>
+                            <div style="font-weight: 600; margin-bottom: 4px;">Cities Live</div>
+                            <div style="font-size: 13px; color: var(--text-muted);">Click to subscribe</div>
+                        </div>
+                        <span class="badge">Updated weekly</span>
+                    </div>
+                    <div class="city-chips" id="cityChips"></div>
+                    <div class="info-boxes">
+                        <div class="info-box">
+                            <div class="info-box-label">Pickup slots</div>
+                            <div class="info-box-value">7–10 AM, 7–10 PM</div>
+                        </div>
+                        <div class="info-box">
+                            <div class="info-box-label">Support hours</div>
+                            <div class="info-box-value">9 AM – 9 PM</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card animate-on-scroll stagger-1">
+                    <div style="font-weight: 600; margin-bottom: 4px;">Estimate Monthly Bill</div>
+                    <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 20px;">Pick a plan and add-ons to calculate.</div>
+                    
+                    <div class="estimate-form">
+                        <div class="form-group">
+                            <label class="form-label">Plan</label>
+                            <select class="input" id="estPlan">
+                                <option value="Starter">Starter</option>
+                                <option value="Plus" selected>Plus</option>
+                                <option value="Family">Family</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Billing</label>
+                            <select class="input" id="estBilling">
+                                <option value="monthly">Monthly</option>
+                                <option value="quarterly">Quarterly (10% off)</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="estimate-addons">
+                        <div class="form-group">
+                            <label class="form-label">Ironing (pcs)</label>
+                            <input type="number" class="input" id="estIron" value="0" min="0">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Dry clean</label>
+                            <input type="number" class="input" id="estDry" value="0" min="0">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Extra kg</label>
+                            <input type="number" class="input" id="estExtra" value="0" min="0">
+                        </div>
+                    </div>
+
+                    <div class="estimate-result">
+                        <div class="estimate-result-header">
+                            <div>
+                                <div class="estimate-total-label">Estimated total</div>
+                                <div class="estimate-total-value" id="estTotal">₹1,399</div>
+                            </div>
+                            <button class="btn btn-primary" id="btnEstSubscribe">Subscribe</button>
+                        </div>
+                        <div class="estimate-breakdown" id="estBreakdown">₹1,399 plan</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section" id="reviews" style="background: var(--bg-card);">
+        <div class="container-custom">
+            <div class="section-header section-header-flex">
+                <div>
+                    <div class="section-label">Testimonials</div>
+                    <h2 class="section-title font-display">Loved by Busy People</h2>
+                </div>
+                <div class="reviews-summary">
+                    <div class="reviews-avatars">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face" class="reviews-avatar" alt="">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" class="reviews-avatar" alt="">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face" class="reviews-avatar" alt="">
+                    </div>
+                    <div class="reviews-rating">
+                        <strong>4.8/5</strong> <span>from 2,500+ reviews</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card animate-on-scroll">
+                    <div class="testimonial-stars">
+                        <i data-lucide="star" class="testimonial-star"></i>
+                        <i data-lucide="star" class="testimonial-star"></i>
+                        <i data-lucide="star" class="testimonial-star"></i>
+                        <i data-lucide="star" class="testimonial-star"></i>
+                        <i data-lucide="star" class="testimonial-star"></i>
+                    </div>
+                    <div class="testimonial-quote">"Saved my Sundays."</div>
+                    <p class="testimonial-text">Pickup is always on time, clothes come back neatly folded. Perfect for my work schedule.</p>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face" class="testimonial-avatar" alt="Ananya">
+                        <div>
+                            <div class="testimonial-name">Ananya</div>
+                            <div class="testimonial-location">Bengaluru</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card animate-on-scroll stagger-1">
+                    <div class="testimonial-stars">
+                        <i data-lucide="star" class="testimonial-star"></i>
+                        <i data-lucide="star" class="testimonial-star"></i>
+                        <i data-lucide="star" class="testimonial-star"></i>
+                        <i data-lucide="star" class="testimonial-star"></i>
+                        <i data-lucide="star" class="testimonial-star"></i>
+                    </div>
+                    <div class="testimonial-quote">"Hostel life made easy."</div>
+                    <p class="testimonial-text">The Plus plan is great. WhatsApp updates are super convenient and the quality is consistent.</p>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" class="testimonial-avatar" alt="Rohit">
+                        <div>
+                            <div class="testimonial-name">Rohit</div>
+                            <div class="testimonial-location">Pune</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card animate-on-scroll stagger-2">
+                    <div class="testimonial-stars">
+                        <i data-lucide="star" class="testimonial-star"></i>
+                        <i data-lucide="star" class="testimonial-star"></i>
+                        <i data-lucide="star" class="testimonial-star"></i>
+                        <i data-lucide="star" class="testimonial-star"></i>
+                        <i data-lucide="star" class="testimonial-star"></i>
+                    </div>
+                    <div class="testimonial-quote">"Better than pay-per-wash."</div>
+                    <p class="testimonial-text">Monthly subscription helps me budget. Quality is consistently good across all pickups.</p>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face" class="testimonial-avatar" alt="Farah">
+                        <div>
+                            <div class="testimonial-name">Farah</div>
+                            <div class="testimonial-location">Hyderabad</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section faq-section" id="faq">
+        <div class="container-custom">
+            <div class="section-header" style="text-align: center;">
+                <div class="section-label">FAQ</div>
+                <h2 class="section-title font-display">Common Questions</h2>
+            </div>
+
+            <div class="faq-list">
+                <details class="faq-item animate-on-scroll" open>
+                    <summary>Can I pause or cancel my subscription?</summary>
+                    <div class="faq-answer">Yes. You can pause anytime from your account dashboard. Cancellation takes effect from the next billing cycle with no extra fees.</div>
+                </details>
+                <details class="faq-item animate-on-scroll stagger-1">
+                    <summary>What if my clothes exceed the weight limit?</summary>
+                    <div class="faq-answer">You'll be charged a simple per-kg fee based on your plan. We always confirm with you before processing any extra charges.</div>
+                </details>
+                <details class="faq-item animate-on-scroll stagger-2">
+                    <summary>Do you offer same-day service?</summary>
+                    <div class="faq-answer">Currently, most pin codes have a 24–48 hour turnaround. Same-day service is available in select areas for an additional fee.</div>
+                </details>
+                <details class="faq-item animate-on-scroll stagger-3">
+                    <summary>How do pickups work in apartments/hostels?</summary>
+                    <div class="faq-answer">Our delivery partner coordinates at the gate or reception during your selected time slot. You'll receive WhatsApp updates with real-time tracking.</div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="section final-cta">
+        <div class="container-custom">
+            <h2 class="final-cta-title font-display animate-on-scroll">Ready to Stop Doing Laundry?</h2>
+            <p class="final-cta-text animate-on-scroll stagger-1">Join thousands of happy customers who have reclaimed their weekends with DhobiPass.</p>
+            <div class="final-cta-actions animate-on-scroll stagger-2">
+                <button class="btn btn-primary" id="btnCtaSubscribe" style="background: white; color: var(--text-primary);">
+                    Start Subscription
+                </button>
+                <a href="#coverage" class="btn btn-secondary">Check Coverage</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container-custom">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-brand-logo">
+                        <div class="footer-brand-icon">
+                            <i data-lucide="shirt" class="w-5 h-5"></i>
+                        </div>
+                        <span class="footer-brand-name">DhobiPass</span>
+                    </div>
+                    <p class="footer-brand-text">India's premium subscription laundry service. Pickup, clean, deliver—every week.</p>
+                    <div class="footer-social">
+                        <a href="#" class="footer-social-link"><i data-lucide="instagram" class="w-4 h-4"></i></a>
+                        <a href="#" class="footer-social-link"><i data-lucide="twitter" class="w-4 h-4"></i></a>
+                        <a href="#" class="footer-social-link"><i data-lucide="linkedin" class="w-4 h-4"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="footer-column-title">Quick Links</div>
+                    <ul class="footer-links">
+                        <li><a href="#how" class="footer-link">How It Works</a></li>
+                        <li><a href="#plans" class="footer-link">Pricing</a></li>
+                        <li><a href="#coverage" class="footer-link">Coverage</a></li>
+                        <li><a href="#faq" class="footer-link">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <div class="footer-column-title">Legal</div>
+                    <ul class="footer-links">
+                        <li><a href="#" class="footer-link">Privacy Policy</a></li>
+                        <li><a href="#" class="footer-link">Terms of Service</a></li>
+                        <li><a href="#" class="footer-link">Refund Policy</a></li>
+                        <li><a href="#" class="footer-link">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <div class="footer-column-title">Newsletter</div>
+                    <p class="footer-newsletter-text">Get tips and exclusive offers.</p>
+                    <form class="footer-newsletter-form">
+                        <input type="email" class="footer-newsletter-input" placeholder="Your email">
+                        <button type="submit" class="footer-newsletter-btn">
+                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-copyright">© <span id="year"></span> DhobiPass. All rights reserved.</div>
+                <div class="footer-made">Made with ❤️ in India</div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Subscribe Modal -->
+    <div class="modal-overlay" id="modal">
+        <div class="modal">
+            <div class="modal-header">
+                <div>
+                    <div class="modal-title">Start Your Subscription</div>
+                    <div class="modal-subtitle">Demo form — submission is simulated</div>
+                </div>
+                <button class="modal-close" id="btnCloseModal">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label">Plan</label>
+                        <select class="input" id="formPlan">
+                            <option>Starter</option>
+                            <option selected>Plus</option>
+                            <option>Family</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Billing</label>
+                        <select class="input" id="formBilling">
+                            <option value="monthly">Monthly</option>
+                            <option value="quarterly">Quarterly</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Full name</label>
+                        <input type="text" class="input" id="formName" placeholder="Your name">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Mobile (India)</label>
+                        <input type="tel" class="input" id="formPhone" placeholder="10-digit number" maxlength="10">
+                    </div>
+                    <div class="form-group full-width">
+                        <label class="form-label">Pickup address</label>
+                        <input type="text" class="input" id="formAddress" placeholder="Flat/House, Street, Area">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">City</label>
+                        <select class="input" id="formCity"></select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">PIN code</label>
+                        <input type="text" class="input" id="formPin" placeholder="6 digits" maxlength="6">
+                    </div>
+                    <div class="form-group full-width">
+                        <label class="form-label">Pickup preference</label>
+                        <div class="pickup-options">
+                            <button type="button" class="pickup-btn" data-value="Morning">Morning</button>
+                            <button type="button" class="pickup-btn active" data-value="Evening">Evening</button>
+                            <button type="button" class="pickup-btn" data-value="Anytime">Anytime</button>
+                        </div>
+                        <input type="hidden" id="formPickup" value="Evening">
+                    </div>
+                </div>
+                <div class="form-error" id="formError"></div>
+            </div>
+
+            <div class="modal-footer">
+                <div class="modal-footer-text">By continuing, you agree to Terms & Privacy.</div>
+                <div class="modal-footer-actions">
+                    <button class="btn btn-whatsapp" id="btnWhatsApp">
+                        <i data-lucide="message-circle" class="w-4 h-4"></i>
+                        WhatsApp
+                    </button>
+                    <button class="btn btn-dark" id="btnSubmit">Confirm</button>
+                </div>
+            </div>
+
+            <div class="success-panel" id="successPanel">
+                <div class="success-content">
+                    <div class="success-icon">
+                        <i data-lucide="check" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <div class="success-title">Subscription request created!</div>
+                        <div class="success-text" id="successText">We'll reach out on WhatsApp to confirm your first pickup.</div>
+                        <div class="success-actions">
+                            <button class="btn btn-dark" id="btnCloseSuccess">Close</button>
+                            <a href="#plans" class="btn btn-secondary" id="btnBackPlans">Back to plans</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Track Drawer -->
+    <div class="drawer-overlay" id="trackOverlay"></div>
+    <div class="drawer" id="trackDrawer">
+        <div class="drawer-header">
+            <div>
+                <div class="drawer-title">Track Order</div>
+                <div class="drawer-subtitle">Enter 6-digit code to simulate</div>
+            </div>
+            <button class="modal-close" id="btnCloseTrack">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+        </div>
+        <div class="drawer-body">
+            <div class="track-input-group">
+                <input type="text" class="input" id="trackCode" placeholder="Order code" maxlength="6">
+                <button class="btn btn-dark" id="btnTrackGo">Go</button>
+            </div>
+            <div class="track-result" id="trackResult">
+                <div class="track-status-card">
+                    <div class="track-status-header">
+                        <span class="track-status-label">Status</span>
+                        <span class="track-status-value" id="trackStatus">Processing</span>
+                    </div>
+                    <div class="track-eta" id="trackEta">ETA: Tomorrow, 7–10 PM</div>
+                    <div class="track-progress">
+                        <div class="track-progress-fill" id="trackProgress" style="width: 35%;"></div>
+                    </div>
+                    <div class="track-meta">Order: <span id="trackMetaCode">000000</span> • City: <span id="trackMetaCity">Bengaluru</span></div>
+                </div>
+                <div class="track-steps">
+                    <div class="track-step"><span>Picked up</span><span class="track-step-time" id="t1">—</span></div>
+                    <div class="track-step"><span>In cleaning</span><span class="track-step-time" id="t2">—</span></div>
+                    <div class="track-step"><span>Quality check</span><span class="track-step-time" id="t3">—</span></div>
+                    <div class="track-step"><span>Out for delivery</span><span class="track-step-time" id="t4">—</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="drawer-footer">
+            <div class="drawer-footer-text">Tip: Replace this demo with your real backend API.</div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Lucide
+        lucide.createIcons();
+
+        // Helpers
+        const $ = (sel) => document.querySelector(sel);
+        const $$ = (sel) => document.querySelectorAll(sel);
+        const formatINR = (n) => '₹' + n.toLocaleString('en-IN');
+
+        // Data
+        const cities = [
+            { name: 'Bengaluru', pins: ['560001','560034','560068','560103','560066'] },
+            { name: 'Hyderabad', pins: ['500081','500032','500072','500084'] },
+            { name: 'Pune', pins: ['411001','411028','411057','411045'] },
+            { name: 'Mumbai', pins: ['400001','400050','400076','400061'] },
+            { name: 'Delhi NCR', pins: ['110001','110017','122001','201301'] },
+            { name: 'Chennai', pins: ['600001','600028','600096'] }
+        ];
+
+        const basePrices = { Starter: 899, Plus: 1399, Family: 1999 };
+        const extraPerKg = { Starter: 55, Plus: 49, Family: 45 };
+        const ironingRate = 8;
+        const dryCleanRate = 99;
+        const quarterlyDiscount = 0.10;
+
+        let billing = 'monthly';
+
+        // ===== Navigation =====
+        const navbar = $('#navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 20);
+        });
+
+        // Mobile menu
+        const mobileMenuBtn = $('#mobileMenuBtn');
+        const mobileMenu = $('#mobileMenu');
+        const menuIcon = $('#menuIcon');
+        let menuOpen = false;
+
+        mobileMenuBtn.addEventListener('click', () => {
+            menuOpen = !menuOpen;
+            mobileMenu.classList.toggle('open', menuOpen);
+            menuIcon.setAttribute('data-lucide', menuOpen ? 'x' : 'menu');
+            lucide.createIcons();
+            document.body.style.overflow = menuOpen ? 'hidden' : '';
+        });
+
+        $$('.mobile-menu-link').forEach(link => {
+            link.addEventListener('click', () => {
+                menuOpen = false;
+                mobileMenu.classList.remove('open');
+                menuIcon.setAttribute('data-lucide', 'menu');
+                lucide.createIcons();
+                document.body.style.overflow = '';
+            });
+        });
+
+        // ===== Scroll Animations =====
+        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        $$('.animate-on-scroll').forEach(el => observer.observe(el));
+
+        // ===== Year =====
+        $('#year').textContent = new Date().getFullYear();
+
+        // ===== City Chips =====
+        const cityChips = $('#cityChips');
+        cities.forEach(c => {
+            const btn = document.createElement('button');
+            btn.className = 'city-chip';
+            btn.textContent = c.name;
+            btn.addEventListener('click', () => openModal({ city: c.name }));
+            cityChips.appendChild(btn);
+        });
+
+        // Populate city select in modal
+        const formCity = $('#formCity');
+        cities.forEach(c => {
+            const opt = document.createElement('option');
+            opt.value = c.name;
+            opt.textContent = c.name;
+            formCity.appendChild(opt);
+        });
+
+        // ===== Billing Toggle =====
+        const billMonthly = $('#billMonthly');
+        const billQuarterly = $('#billQuarterly');
+
+        function updatePrices() {
+            const map = { starter: 'Starter', plus: 'Plus', family: 'Family' };
+            for (const key in map) {
+                const plan = map[key];
+                const monthly = basePrices[plan];
+                const effective = billing === 'monthly' ? monthly : Math.round(monthly * (1 - quarterlyDiscount));
+                
+                $(`[data-price="${key}"]`).textContent = formatINR(effective);
+                
+                const sub = $(`[data-subprice="${key}"]`);
+                if (billing === 'monthly') {
+                    sub.textContent = `${formatINR(monthly)} billed monthly`;
+                } else {
+                    const qTotal = Math.round(monthly * 3 * (1 - quarterlyDiscount));
+                    sub.textContent = `${formatINR(qTotal)} billed quarterly`;
+                }
+            }
+            $('#estBilling').value = billing;
+            $('#formBilling').value = billing;
+            updateEstimate();
+        }
+
+        billMonthly.addEventListener('click', () => {
+            billing = 'monthly';
+            billMonthly.classList.add('active');
+            billQuarterly.classList.remove('active');
+            updatePrices();
+        });
+
+        billQuarterly.addEventListener('click', () => {
+            billing = 'quarterly';
+            billQuarterly.classList.add('active');
+            billMonthly.classList.remove('active');
+            updatePrices();
+        });
+
+        // ===== Estimate Calculator =====
+        function updateEstimate() {
+            const plan = $('#estPlan').value;
+            const bill = $('#estBilling').value;
+            const iron = Math.max(0, parseInt($('#estIron').value) || 0);
+            const dry = Math.max(0, parseInt($('#estDry').value) || 0);
+            const extra = Math.max(0, parseFloat($('#estExtra').value) || 0);
+
+            const monthly = basePrices[plan];
+            const planCost = bill === 'monthly' ? monthly : Math.round(monthly * 3 * (1 - quarterlyDiscount));
+            const ironCost = iron * ironingRate;
+            const dryCost = dry * dryCleanRate;
+            const extraCost = Math.round(extra * extraPerKg[plan]);
+            const total = planCost + ironCost + dryCost + extraCost;
+
+            $('#estTotal').textContent = formatINR(total);
+            
+            const parts = [
+                bill === 'monthly' ? `${formatINR(monthly)} plan` : `${formatINR(planCost)} quarterly`,
+                iron ? `Ironing: ${formatINR(ironCost)}` : null,
+                dry ? `Dry clean: ${formatINR(dryCost)}` : null,
+                extra ? `Extra: ${formatINR(extraCost)}` : null
+            ].filter(Boolean);
+            $('#estBreakdown').textContent = parts.join(' • ');
+        }
+
+        ['estPlan', 'estBilling', 'estIron', 'estDry', 'estExtra'].forEach(id => {
+            $(`#${id}`).addEventListener('input', updateEstimate);
+            $(`#${id}`).addEventListener('change', updateEstimate);
+        });
+
+        // ===== PIN Check =====
+        function findCityByPin(pin) {
+            return cities.find(c => c.pins.includes(pin));
+        }
+
+        $('#btnCheckPin').addEventListener('click', () => {
+            const pin = $('#pinInput').value.trim();
+            const result = $('#pinResult');
+            
+            if (!/^\d{6}$/.test(pin)) {
+                result.innerHTML = '<span style="color: var(--text-muted);">Enter a valid 6-digit PIN.</span>';
+                return;
+            }
+
+            const city = findCityByPin(pin);
+            if (city) {
+                result.innerHTML = `<span style="color: var(--success);">✓ We're live in ${city.name} for PIN ${pin}!</span>`;
+                openModal({ city: city.name, pin });
+            } else {
+                result.innerHTML = `<span style="color: var(--text-muted);">We're not in ${pin} yet. Join the waitlist!</span>`;
+                openModal({ pin });
+            }
+        });
+
+        // ===== Demo Simulator =====
+        const demoStates = [
+            { status: 'Picked up', progress: 25, day: 'Wednesday', slot: '7–9 PM' },
+            { status: 'In cleaning', progress: 50, day: 'Wednesday', slot: '7–9 PM' },
+            { status: 'Quality check', progress: 75, day: 'Thursday', slot: '10 AM – 1 PM' },
+            { status: 'Out for delivery', progress: 90, day: 'Thursday', slot: '7–10 PM' },
+            { status: 'Delivered', progress: 100, day: 'Thursday', slot: '7–10 PM' }
+        ];
+        let demoIndex = 0;
+
+        function updateDemo() {
+            const state = demoStates[demoIndex];
+            $('#demoDay').textContent = state.day;
+            $('#demoSlot').textContent = state.slot;
+            $('#demoStatus').textContent = state.status;
+            $('#demoProgress').style.width = state.progress + '%';
+        }
+
+        $('#btnSimulate').addEventListener('click', () => {
+            demoIndex = Math.min(demoIndex + 1, demoStates.length - 1);
+            updateDemo();
+        });
+
+        $('#btnReset').addEventListener('click', () => {
+            demoIndex = 0;
+            updateDemo();
+        });
+
+        // ===== Modal =====
+        const modal = $('#modal');
+        const successPanel = $('#successPanel');
+
+        function openModal(preset = {}) {
+            modal.classList.add('open');
+            document.body.style.overflow = 'hidden';
+            successPanel.classList.remove('show');
+            $('#formError').classList.remove('show');
+
+            if (preset.plan) $('#formPlan').value = preset.plan;
+            if (preset.city) $('#formCity').value = preset.city;
+            if (preset.pin) $('#formPin').value = preset.pin;
+            $('#formBilling').value = billing;
+        }
+
+        function closeModal() {
+            modal.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        // Open modal buttons
+        ['btnNavSubscribe', 'btnHeroSubscribe', 'btnBannerSubscribe', 'btnCtaSubscribe', 'btnMobileSubscribe', 'btnEstSubscribe'].forEach(id => {
+            const btn = $(`#${id}`);
+            if (btn) btn.addEventListener('click', () => openModal());
+        });
+
+        $$('.btnPlan').forEach(btn => {
+            btn.addEventListener('click', () => openModal({ plan: btn.dataset.plan }));
+        });
+
+        $('#btnCloseModal').addEventListener('click', closeModal);
+        $('#btnCloseSuccess').addEventListener('click', closeModal);
+        $('#btnBackPlans').addEventListener('click', closeModal);
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+
+        // Pickup preference buttons
+        $$('.pickup-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                $$('.pickup-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                $('#formPickup').value = btn.dataset.value;
+            });
+        });
+
+        // Form submission
+        $('#btnSubmit').addEventListener('click', () => {
+            const name = $('#formName').value.trim();
+            const phone = $('#formPhone').value.replace(/\D/g, '');
+            const address = $('#formAddress').value.trim();
+            const pin = $('#formPin').value.trim();
+            const error = $('#formError');
+
+            if (!name) { error.textContent = 'Please enter your name.'; error.classList.add('show'); return; }
+            if (phone.length !== 10) { error.textContent = 'Please enter a valid 10-digit mobile number.'; error.classList.add('show'); return; }
+            if (!address) { error.textContent = 'Please enter your address.'; error.classList.add('show'); return; }
+            if (!/^\d{6}$/.test(pin)) { error.textContent = 'Please enter a valid 6-digit PIN.'; error.classList.add('show'); return; }
+
+            error.classList.remove('show');
+
+            const city = findCityByPin(pin);
+            const plan = $('#formPlan').value;
+            const planPrice = billing === 'monthly' ? basePrices[plan] : Math.round(basePrices[plan] * 3 * (1 - quarterlyDiscount));
+
+            const msg = city 
+                ? `Thanks, ${name}! Your ${plan} subscription request is created. Estimated: ${formatINR(planPrice)}. We'll WhatsApp you to confirm pickup.`
+                : `Thanks, ${name}! We've added you to the waitlist for PIN ${pin}. We'll notify you when we launch in your area.`;
+
+            $('#successText').textContent = msg;
+            successPanel.classList.add('show');
+        });
+
+        // WhatsApp
+        $('#btnWhatsApp').addEventListener('click', () => {
+            const name = $('#formName').value.trim();
+            const plan = $('#formPlan').value;
+            const pin = $('#formPin').value.trim();
+            const text = encodeURIComponent(`Hi DhobiPass! I want to subscribe. Name: ${name || '-'} | Plan: ${plan} | PIN: ${pin || '-'}`);
+            window.open(`https://wa.me/919999999999?text=${text}`, '_blank');
+        });
+
+        // ===== Track Drawer =====
+        const trackOverlay = $('#trackOverlay');
+        const trackDrawer = $('#trackDrawer');
+
+        function openTrack() {
+            trackOverlay.classList.add('open');
+            trackDrawer.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeTrack() {
+            trackOverlay.classList.remove('open');
+            trackDrawer.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        $('#btnTrack').addEventListener('click', openTrack);
+        $('#btnCloseTrack').addEventListener('click', closeTrack);
+        trackOverlay.addEventListener('click', closeTrack);
+
+        $('#btnTrackGo').addEventListener('click', () => {
+            const code = $('#trackCode').value.trim();
+            if (!/^\d{6}$/.test(code)) return;
+
+            $('#trackResult').classList.add('show');
+            $('#trackMetaCode').textContent = code;
+            $('#trackMetaCity').textContent = cities[Math.floor(Math.random() * cities.length)].name;
+
+            const stages = [
+                { status: 'Picked up', progress: 25, eta: 'ETA: Today, 7–10 PM' },
+                { status: 'In cleaning', progress: 50, eta: 'ETA: Tomorrow, 10 AM – 1 PM' },
+                { status: 'Quality check', progress: 75, eta: 'ETA: Tomorrow, 7–10 PM' },
+                { status: 'Out for delivery', progress: 90, eta: 'ETA: Next 2 hours' },
+                { status: 'Delivered', progress: 100, eta: 'Delivered ✓' }
+            ];
+
+            const stage = stages[Math.floor(Math.random() * stages.length)];
+            $('#trackStatus').textContent = stage.status;
+            $('#trackEta').textContent = stage.eta;
+            $('#trackProgress').style.width = stage.progress + '%';
+
+            const now = new Date();
+            const fmt = (mins) => new Date(now - mins * 60000).toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' });
+            $('#t1').textContent = stage.progress >= 25 ? fmt(360) : '—';
+            $('#t2').textContent = stage.progress >= 50 ? fmt(180) : '—';
+            $('#t3').textContent = stage.progress >= 75 ? fmt(60) : '—';
+            $('#t4').textContent = stage.progress >= 90 ? fmt(15) : '—';
+        });
+
+        // ===== Smooth Scroll =====
+        $$('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = $(anchor.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // ===== Initialize =====
+        updatePrices();
+        updateEstimate();
+        updateDemo();
+    </script>
+</body>
+</html>
